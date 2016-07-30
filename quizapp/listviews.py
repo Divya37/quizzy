@@ -30,7 +30,7 @@ class Questions_view(LoginRequiredMixin, DetailView):
 
     def render_to_response(self, context, **response_kwargs):
         context.update({'object_list':Question.objects.filter(exam_id=int(self.kwargs.get('pk')))})
-        return super(Questions_view, self).render_to_response(context, **response_kwargs)
+        return HttpResponse(render(request=self.request,template_name=self.template_name,context=context))
 
     def get_queryset(self):
         q = Question.objects.all()
