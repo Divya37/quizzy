@@ -71,7 +71,7 @@ class Write_quiz(LoginRequiredMixin, DetailView):
         return q
 
     def get_object(self, queryset=None):
-        return Question.objects.get(self.kwargs.get('pk'))
+        return Question.objects.get(self.kwargs.get(id='pk'))
 
     def post(self,request,pk):
         user_ans = request._post
