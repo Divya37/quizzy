@@ -26,7 +26,7 @@ SECRET_KEY = 'v-@bf(fm=$6uhyntsd6g=22(!yuo(r+dlsg&qok^o41k09lm^q'
 DEBUG = True
 
 from django.core.urlresolvers import resolve, reverse_lazy
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["quizzy123.herokuapp.com/"]
 LOGIN_URL = reverse_lazy('login')
 LOGIN_REDIRECT_URL = '/quizzy/quizlist/'
 
@@ -126,4 +126,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
+
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+STATIC_URL = '/static/'
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)

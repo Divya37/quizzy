@@ -35,7 +35,7 @@ class Questions_view(LoginRequiredMixin, DetailView):
     def get_queryset(self):
         q = Question.objects.all()
         return q
-    
+
 class Create_quiz(LoginRequiredMixin, CreateView):
     model = Exam
     fields = ['name', 'length', 'no_of_questions']
