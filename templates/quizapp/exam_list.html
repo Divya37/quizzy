@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EXAM DETAILS</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+<div class="jumbotron">
+	<div class="container">
+		<h1>QUIZZY</h1>
+        <h2>Hello {{ user }}!</h2>
+	</div>
+</div>
+<div align="center"><a href="createquiz/" class="btn btn-info" role="button">CREATE NEW QUIZ</a>
+</div>
+   <table class="table table-striped" align="center">
+    <thead>
+      <tr>
+        <th>TESTS AVAILABLE</th>
+      </tr>
+    </thead>
+    {%for i in quiz_view%}
+    <tr>
+        <td>
+            {% if i.user_id == user.id %}
+                <a href="{% url "detailed_view" i.id %}">
+                    {{ i.name }}
+                </a>
+            {% else %}
+                {{ i.name }}
+            {% endif %}
+
+        </td>
+
+        <td><a href="{{ i.id }}/writetest/" class="btn btn-default" role="button">START TEST</a></td>
+    </tr>
+    {% endfor %}
+    </table>
+<div align="center"><a href="/" class="btn btn-info" role="button">LOGOUT</a>
+</div>
+
+
+</body>
+</html>

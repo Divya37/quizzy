@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QUESTIONS</title>
+</head>
+<body>
+in questionlist.html
+<table border="1" style="width:80%" align="center">
+
+{%for i in questions%}
+    <tr>{{ i.text }}</tr>
+    <tr><input type="radio" name="option" value=1>{{ i.option1 }}</tr>
+    <tr><input type="radio" name="option" value=2>{{ i.option2 }}</tr>
+    <tr><input type="radio" name="option" value=3>{{ i.option3 }}</tr>
+    <tr><input type="radio" name="option" value=4>{{ i.option4 }}</tr>
+{% endfor %}
+</table>
+</body>
+</html>

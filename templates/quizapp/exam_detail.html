@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EXAM DETAILS</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+}
+</head>
+<body>
+<div class="jumbotron" >
+	<div class="container">
+		<h1>EXAM QUESTIONS</h1>
+	</div>
+</div>
+<table border="1" style="width:80%" align="center" class="table table-condensed table-striped form-group">
+<tr>
+    <th>Exam Questions</th>
+    <th>Option1</th>
+    <th>Option2</th>
+    <th>Option3</th>
+    <th>Option4</th>
+</tr>
+
+{%for j in object_list %}
+    <tr>
+    <td>{{ j.text }}</td>
+    <td>{{ j.option1 }}</td>
+    <td>{{ j.option2 }}</td>
+    <td>{{ j.option3 }}</td>
+    <td>{{ j.option4 }}</td>
+    </tr>
+{% endfor %}
+</table>
+<div align="center">
+<a href="create_question/" class="btn btn-info" role="button" align="center">ADD QUESTION</a>
+<a href="/quizzy/quizlist/" class="btn btn-info" role="button" align="center">GO BACK</a>
+</div>
+</body>
+</html>
