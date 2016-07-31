@@ -32,9 +32,9 @@ class Questions_view(LoginRequiredMixin, DetailView):
         context.update({'object_list':Question.objects.filter(exam_id=int(self.kwargs.get('pk')))})
         return HttpResponse(render(request=self.request,template_name=self.template_name,context=context))
 
-    # def get_queryset(self):
-    #     q = Question.objects.all()
-    #     return q
+    def get_queryset(self):
+        q = Question.objects.all()
+        return q
 
 class Create_quiz(LoginRequiredMixin, CreateView):
     model = Exam

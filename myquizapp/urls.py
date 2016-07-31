@@ -16,14 +16,14 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import TemplateView
-
 from quizapp import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^',include('django.contrib.auth.urls')),
+    url(r'^createuser/$',views.get_registrationform,name="registration"),
+    url(r'^success/$',TemplateView.as_view(template_name="quizapp/home.html"),name="success"),
     url(r'^quizzy/', include('quizapp.urls' )),
     url(r'^$', views.home),
 
 ]
-#include('django.contrib.auth.urls')

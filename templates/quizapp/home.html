@@ -7,8 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+{#  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>#}
+{#  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>#}
+  {% load staticfiles %}
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
   <style>
   body {
       font: 20px Montserrat, sans-serif;
@@ -22,7 +28,7 @@
       color: #ffffff;
   }
   .bg-2 {
-      background-color: #474e5d; /* Dark Blue */
+      background-color: #5e5e5e; /* Dark Blue */
       color: #ffffff;
   }
   .bg-3 {
@@ -66,7 +72,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li>Scroll down and explore more about Quizzy</li>
+        <li href="#" style="text-color: black">Scroll down and explore more about Quizzy</li>
       </ul>
     </div>
   </div>
@@ -79,7 +85,8 @@
   <h3>I'm Quizzy</h3>
     <div align="center">
 <a href="login/" class="btn btn-info" role="button">LOGIN</a>
-<button type="button" class="btn btn-primary disabled">SIGN UP</button>
+<a href="createuser/" class="btn btn-info" role="button">SIGN UP</a>
+{#<button type="button" class="btn btn-primary disabled">SIGN UP</button>#}
 </div>
 </div>
 

@@ -9,4 +9,4 @@ urlpatterns = [
     url(r'^quizlist/(?P<pk>[0-9]+)/writetest/$', listviews.Write_quiz.as_view()),
     url(r'^quizlist/(?P<pk>[0-9]+)/writetest/results$', views.Evaluate_quiz),
     url(r'^quizlist/(?P<pk>[0-9]+)/create_question/$', listviews.Create_question.as_view()),
-]#listviews.Exams_view.as_view(), name= 'quiz_view'
+]

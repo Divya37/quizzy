@@ -16,7 +16,6 @@ def questionslist(request, id):
     return HttpResponse(res)
 
 def home(request):
-    # template = loader.get_template('quizapp/home.html')
     return HttpResponse(render(request,'quizapp/home.html'))
 
 def Evaluate_quiz(request, id):
@@ -24,6 +23,28 @@ def Evaluate_quiz(request, id):
     template = loader.get_template('quizapp/result.html')
     res = template.render(p)
     return HttpResponse(res)
+
+from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+from quizapp.forms import RegistrationForm
+
+def get_registrationform(request):
+    if(request.method=='POST'):
+        form=RegistrationForm(request.POST)
+        if form.is_valid():
+            username=form.cleaned_data['username']
+            email=form.cleaned_data['email']
+            password1=form.cleaned_data['password1']
+            password2=form.cleaned_data['password2']
+            if password1==password2:
+                User.objects.create_superuser(username,email,password1)
+                return HttpResponseRedirect("/")
+            else:
+                form=RegistrationForm()
+        return render(request,'registration.html',{'form':RegistrationForm})
+    else:
+        return render(request,'registration.html',{'form':RegistrationForm})
 
 def quiz(request):
     return render(request, "quizlist.html")
